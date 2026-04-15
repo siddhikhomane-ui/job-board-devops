@@ -21,7 +21,7 @@ jobs:
     - name: Install Frontend
       run: |
         cd frontend
-        npm install
+        npm install --legacy-peer-deps
 
     # BACKEND
     - name: Setup Python
