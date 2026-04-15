@@ -1,0 +1,52 @@
+# version: '3.8'
+
+# services:
+#   mongo:
+#     image: mongo:6
+#     ports:
+#       - "27017:27017"
+
+#   backend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.backend
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - MONGO_URL=mongodb://mongo:27017
+#       - DB_NAME=jobboard
+#       - JWT_SECRET=supersecretkey12345678901234567890
+#     depends_on:
+#       - mongo
+
+#   frontend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.frontend
+#     ports:
+#       - "3000:80"
+#     depends_on:
+#       - backend
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb+srv://siddhikhomane_db_user:4Oc78RCRRG4qqD82@cluster0.wgsla3b.mongodb.net/jobboard?retryWrites=true&w=majority
+      - DB_NAME=jobboard
+      - JWT_SECRET=supersecretkey12345678901234567890
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
