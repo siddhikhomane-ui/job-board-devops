@@ -1,0 +1,20 @@
+commands to run project(2 terminals)
+backend
+cd desktop/job-board-system-project/backend
+venv\Scripts\activate
+
+$env:JWT_SECRET="supersecretkey12345678901234567890"
+$env:MONGO_URL="mongodb://localhost:27017"
+$env:DB_NAME="jobboard"
+
+uvicorn server:app --reload
+
+
+==========
+frontend
+cd desktop/job-board-system-project/frontend
+npm install (using new pc)
+npm start
+===========
+to check api is working correctly
+http://127.0.0.1:8000/docs
