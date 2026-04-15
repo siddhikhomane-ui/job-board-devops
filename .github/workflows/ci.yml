@@ -33,7 +33,7 @@ jobs:
           cd frontend
           npm run build
 
-      # 5. Setup Python (Backend) ✅ FIXED (3.11)
+      # 5. Setup Python (Backend)
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -46,15 +46,15 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 7. Run Backend Check (optional)
+      # 7. Run Backend (optional)
       - name: Run Backend
         run: |
           cd backend
           python main.py || echo "Backend run skipped"
 
-      # 8. SonarQube Scan ✅ FIXED (new action)
+      # 8. SonarQube Scan ✅ FINAL FIX (v6 + correct env)
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
